@@ -8,7 +8,11 @@ d6(){
   
 	rebuildall)
 		docker-compose rm --all && docker-compose pull && docker-compose build --no-cache && docker-compose up -d --force-recreate
-		;;	
+		;;
+
+	shellcontainer)
+		docker exec -it noeljacksoncom_wordpress_1 bash
+		;;
 
       *)
             echo $"Usage: $0 {start|stop|restart|condrestart|status}"
