@@ -19,6 +19,9 @@ d6(){
 	findvolumes)
 		docker inspect -f {{.Volumes}}
 		;;
+	removewithvolumes)
+		docker rm -v $2
+		;;
 
       *)
             echo $"Usage: $0 {start|stop|restart|condrestart|status}"
