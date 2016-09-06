@@ -16,6 +16,9 @@ d6(){
 	backup)
 		docker run --rm   --volumes-from ddc1a7eae4f1   -v $(pwd):/backup  boombatower/docker-backup
 		;;
+	findvolumes)
+		docker inspect -f {{.Volumes}}
+		;;
 
       *)
             echo $"Usage: $0 {start|stop|restart|condrestart|status}"
