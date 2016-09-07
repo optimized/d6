@@ -9,6 +9,9 @@ d6(){
 	rebuildall)
 		docker-compose rm --all && docker-compose pull && docker-compose build --no-cache && docker-compose up -d --force-recreate
 		;;
+	removeuntagged))
+		docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+		;;	
 
 	shellcontainer)
 		docker exec -it noeljacksoncom_wordpress_1 bash
