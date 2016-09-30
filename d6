@@ -6,12 +6,18 @@ var v8flags = require('v8flags');
 var argv = require('minimist')(process.argv.slice(2));
 var shell = require("shelljs");
 
-//var args = process.argv.splice(process.execArgv.length + 2);
+var plugins = "./plugins/";
 
 var tasksFlag = argv.T || argv.tasks;
 var tasks = argv._;
 var toRun = tasks.length ? tasks : ['default'];
 
-console.log(tasks);
+process.env.INIT_CWD = process.cwd();
 
-shell.exec(tasks);
+if (process.argv.length < 3) {
+  process.exit(1);
+}
+
+console.log("Executing: " + tasks);
+
+shell.exec(plugins + tasks);

@@ -7,7 +7,9 @@
     "v8flags": "^2.0.11",
     "minimist": "^1.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "shelljs": "^0.7.4"
+  },
   "scripts": {
     "test": "d6 list"
   },
