@@ -1,0 +1,1 @@
+docker run --rm   --volumes-from ddc1a7eae4f1   -v /Users/noel/clients/d6/plugins:/backup  boombatower/docker-backup
