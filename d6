@@ -2,22 +2,23 @@
 
 'use strict';
 
-var v8flags = require('v8flags');
-var argv = require('minimist')(process.argv.slice(2));
-var shell = require("shelljs");
+var chalk = require('chalk') //TODO: make much color
+var v8flags = require('v8flags')
+var minimist = require('minimist')
+var mreverse = require('minimist-reverse')
+var shell = require("shelljs")
 
-var plugins = "./plugins/";
+var plugins = "./plugins/"
 
-var tasksFlag = argv.T || argv.tasks;
-var tasks = argv._;
-var toRun = tasks.length ? tasks : ['default'];
+process.env.INIT_CWD = process.cwd()
 
-process.env.INIT_CWD = process.cwd();
-
-if (process.argv.length < 3) {
-  process.exit(1);
+if (process.argv.length < 1) {
+  process.exit(1)
 }
 
-console.log("Executing: " + tasks);
+var argv = minimist(process.argv.slice(2))
+var tasks = mreverse(argv)
 
-shell.exec(plugins + tasks);
+console.log("Executing: " + tasks)
+
+//shell.exec(plugins + tasks);
