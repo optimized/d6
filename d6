@@ -1,0 +1,17 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var v8flags = require('v8flags');
+var argv = require('minimist')(process.argv.slice(2));
+var shell = require("shelljs");
+
+//var args = process.argv.splice(process.execArgv.length + 2);
+
+var tasksFlag = argv.T || argv.tasks;
+var tasks = argv._;
+var toRun = tasks.length ? tasks : ['default'];
+
+console.log(tasks);
+
+shell.exec(tasks);

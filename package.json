@@ -1,0 +1,27 @@
+{
+  "name": "d6",
+  "version": "0.0.1",
+  "description": "docker helpers from @6e6a",
+  "main": "d6.js",
+  "dependencies": {
+    "v8flags": "^2.0.11",
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "d6 list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6e6a/d6.git"
+  },
+  "keywords": [
+    "docker"
+  ],
+  "author": "Noël Jackson",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/6e6a/d6/issues"
+  },
+  "homepage": "https://github.com/6e6a/d6#readme"
+}
