@@ -1,6 +1,6 @@
 # d6
 
-d6 is modualr system for running shell commands, specifically aimed at running repetivie and complicated docker commands
+d6 is modular system for running shell commands, specifically aimed at running repetivie and complicated docker commands
 
 This is an alpha 0.0.1 version.
 
