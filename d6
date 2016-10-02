@@ -2,23 +2,58 @@
 
 'use strict';
 
-var chalk = require('chalk') //TODO: make much color
-var v8flags = require('v8flags')
-var minimist = require('minimist')
-var mreverse = require('minimist-reverse')
-var shell = require("shelljs")
+//global utils
+var chalk = require( 'chalk' ) //TODO: make much color
+var v8flags = require( 'v8flags' )
+var minimist = require( 'minimist' )
+var mreverse = require( 'minimist-reverse' )
+require( 'shelljs/global' )
 
-var plugins = "./plugins/"
+//directories
+var plugins = process.cwd() + "/plugins/"
 
-process.env.INIT_CWD = process.cwd()
+if ( process.argv.length < 3 ) {
+    console.log( 'Please enter a command' );
 
-if (process.argv.length < 1) {
-  process.exit(1)
+    process.exit( 1 )
 }
 
-var argv = minimist(process.argv.slice(2))
-var tasks = mreverse(argv)
+//complete command
+var command = argv[ '_' ][ 0 ]
 
-console.log("Executing: " + tasks)
+//arguments
+var argv = minimist( process.argv.slice( 2 ) )
 
-//shell.exec(plugins + tasks);
+//full command
+var fullcommand = mreverse( argv )
+
+if ( command == 'list' ) {
+
+    echo( ls( plugins ).sed( ' ', '\n' ) )
+    process.exit( 1 )
+
+}
+
+//does command file exist?
+var existsFile = require( 'exists-file' )
+if ( existsFile.sync( plugins + command ) == true ) {
+
+    runcommand()
+
+} else {
+
+    echo( 'No such command' )
+
+}
+
+function runcommand() {
+    exec( plugins + fullcommand, function ( code, stdout, stderr ) {
+
+        if ( code == 0 && stdout == false ) {
+
+            console.log( "Your program didn't output anything." )
+
+        }
+
+    } );
+}

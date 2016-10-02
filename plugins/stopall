@@ -1,1 +1,6 @@
+if [[ $(docker ps -q) > 0 ]]
+then
 docker stop $(docker ps -q)
+else
+echo "No containers to stop"
+fi
