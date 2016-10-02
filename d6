@@ -12,21 +12,24 @@ require( 'shelljs/global' )
 //directories
 var plugins = process.cwd() + "/plugins/"
 
+// Did we get anything?
 if ( process.argv.length < 3 ) {
-    console.log( 'Please enter a command' );
 
+    console.log( 'Please enter a command' );
     process.exit( 1 )
+
 }
 
-//complete command
+//the command
 var command = argv[ '_' ][ 0 ]
 
 //arguments
 var argv = minimist( process.argv.slice( 2 ) )
 
-//full command
+//full command to execute
 var fullcommand = mreverse( argv )
 
+// list all commands
 if ( command == 'list' ) {
 
     echo( ls( plugins ).sed( ' ', '\n' ) )
@@ -36,6 +39,7 @@ if ( command == 'list' ) {
 
 //does command file exist?
 var existsFile = require( 'exists-file' )
+
 if ( existsFile.sync( plugins + command ) == true ) {
 
     runcommand()
@@ -47,6 +51,7 @@ if ( existsFile.sync( plugins + command ) == true ) {
 }
 
 function runcommand() {
+
     exec( plugins + fullcommand, function ( code, stdout, stderr ) {
 
         if ( code == 0 && stdout == false ) {
@@ -56,4 +61,5 @@ function runcommand() {
         }
 
     } );
+
 }
