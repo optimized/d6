@@ -20,11 +20,11 @@ if ( process.argv.length < 3 ) {
 
 }
 
-//the command
-var command = argv[ '_' ][ 0 ]
-
 //arguments
 var argv = minimist( process.argv.slice( 2 ) )
+
+//the command
+var command = argv[ '_' ][ 0 ]
 
 //full command to execute
 var fullcommand = mreverse( argv )
