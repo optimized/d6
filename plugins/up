@@ -1,0 +1,6 @@
+if [[ $(cat docker-compose.yml) > 0 ]]
+then
+docker-compose up
+else
+echo "No docker-compose.yml file"
+fi
