@@ -10,7 +10,7 @@ var mreverse = require( 'minimist-reverse' )
 require( 'shelljs/global' )
 
 //directories
-var plugins = process.cwd() + "/plugins/"
+var plugins = __dirname + "/plugins/"
 
 // Did we get anything?
 if ( process.argv.length < 3 ) {
