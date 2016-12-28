@@ -29,6 +29,7 @@ var command = argv[ '_' ][ 0 ]
 //full command to execute
 var fullcommand = mreverse( argv )
 
+function commands() {
 // list all commands
 if ( command == 'list' ) {
 
@@ -36,23 +37,27 @@ if ( command == 'list' ) {
     process.exit( 1 )
 
 }
+}
+
+commands()
 
 //does command file exist?
 var existsFile = require( 'exists-file' )
 
 if ( existsFile.sync( plugins + command ) == true ) {
 
-    runcommand()
+    runcommand( plugins + fullcommand )
 
 } else {
 
     echo( 'No such command' )
+    commands()
 
 }
 
-function runcommand() {
+function runcommand( plugin ) {
 
-    exec( plugins + fullcommand, function ( code, stdout, stderr ) {
+    exec( plugin , function ( code, stdout, stderr ) {
 
         if ( code == 0 && stdout == false ) {
 
