@@ -15,7 +15,8 @@ var plugins = __dirname + "/plugins/"
 // Did we get anything?
 if ( process.argv.length < 3 ) {
 
-    console.log( 'Please enter a command' );
+
+    commands();
     process.exit( 1 )
 
 }
@@ -31,15 +32,24 @@ var fullcommand = mreverse( argv )
 
 function commands() {
 // list all commands
-if ( command == 'list' ) {
+  if ( command == 'list' ) {
 
     echo( ls( plugins ).sed( ' ', '\n' ) )
     process.exit( 1 )
 
-}
+  }
 }
 
-commands()
+// Did we get anything?
+if ( process.argv.length < 3 ) {
+
+
+    commands();
+    process.exit( 1 )
+
+}
+
+commands();
 
 //does command file exist?
 var existsFile = require( 'exists-file' )
